@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" ng-app>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>Westpac - Snap</title>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="scripts/snap.js"></script>
+        <link rel="stylesheet" href="css/snap.css"/>
+    </head>
+    <body ng-controller="snap">
+        <header>
+            <h1>Snap</h1>
+            <nav>
+                <div class="alert" ng-show="winner && !end">SNAP, win goes to <b>{{winner}}</b> <button ng-click="next()">next</button></div>
+                <div class="alert" ng-show="end">Game over: the winner "{{winner}}" <button ng-click="reset()">rematch</button></div>
+            </nav>
+            <div id="whosturn">
+                <div class="human" ng-class="{green:!turn}">Player</div>
+                <div class="computer" ng-class="{green:turn}">Computer</div>
+            </div>
+        </header>
+
+        <section>
+
+            <div id="game-table">
+                <div ng-repeat="card in deck" class="card" ng-class="{human:card.player=='human',computer:card.player=='computer',backface:!!card.player,reveal:$index==$parent.index&&$parent.winner}" ng-click="!card.player&&$parent.snap();card.player=='human'&&$parent.play();">
+                    <div class="flipper">
+                        <div class="front">
+                            <span class="top">{{card.value}} <div ng-class="card.suit"></div></span>
+                            <div class="center"></div>
+                            <span class="bottom">{{card.value}} <div ng-class="card.suit"></div></span>
+                        </div>
+                        <div class="back">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <footer id="game-controls">
+
+            <button ng-click="reset()">shuffle</button>
+            <br />
+            Computer reaction time <input type="range" ng-model="reaction_time" step=100 min=0 max=3000 /> {{reaction_time}} ms
+        </footer>
+    </body>
+</html>

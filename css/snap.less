@@ -1,0 +1,189 @@
+.spade { background-position: 5px 0; }
+.heart { background-position: -50px 0; }
+.diamond { background-position: 5px -50px; }
+.club { background-position: -50px -50px; }
+
+.spade, .heart, .diamond, .club { 
+	height: 50px; width: 50px;
+	background-image: url('../img/French_suits.svg');
+	background-repeat : no-repeat;
+  	overflow : hidden;
+  	background-size: 100px auto;
+}
+html,body{
+	height:100%;
+	font-family: arial;
+	box-sizing:border-box;
+}
+
+button{
+	color:white;
+	background-image:linear-gradient(to bottom, #62C462, #51A351);
+	border:none;
+	border-radius:5px;
+	padding:4px 8px;
+	font-size:1.5rem;
+}
+
+body{
+	margin:0;
+	padding:0;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+}
+section{
+	flex: 1 1 auto;
+	border:1px solid #ddd; 
+}
+
+header, footer{
+	min-height:150px;
+	background-color: #eee;
+	nav{
+		height:50px;
+	}
+	.alert{
+		background-color: #ddd;
+		line-height: 1;
+	}
+}
+
+
+#whosturn{
+	color:#aaa;
+	.green{
+		color:#62C462;
+		border-bottom-color:#62C462;
+		transition:0.5s;
+	}
+	div{
+		border-bottom:5px solid;
+		border-radius: 10px 10px 0 0;
+		width:150px;
+		display: inline-block;
+		&.computer{
+			margin-left:100px;
+		}
+		&.human{
+			margin-right:100px;
+		}
+	}
+}
+
+#game-table{
+	@cardWidth:150px;
+	@cardHeight:200px;
+
+	padding:20px;
+
+	display: inline-block;
+	position:relative;
+	height:200px;
+
+	// Orrible, but easy fix
+	-webkit-transform:translateX(-(@cardWidth/2));
+
+	.card{
+		font-weight: bold;
+		font-size:2rem;
+		height:@cardHeight;
+		width:@cardWidth;
+		position:absolute;
+		background-color:white;
+		-webkit-perspective: 400;
+		&.computer{
+			-webkit-transform:translateX(200px);
+		}
+		&.human{
+			cursor: pointer;
+			-webkit-transform:translateX(-200px);
+		}
+		&.reveal{
+			cursor: pointer;
+			-webkit-transform:translateY(100px) rotate(-10deg);
+		}
+
+
+		.flipper{
+			box-shadow: 0 0 0 1px #aaa;
+			border-radius: 10px;
+			width:@cardWidth;
+			height:@cardHeight;
+
+			-webkit-transform-style: preserve-3d;
+			transition: 0.6s;
+			position: relative;
+		}
+
+		.front,.back{
+			-webkit-backface-visibility: hidden;
+			position: absolute;
+			border-radius: 10px;
+			@padding:10px;
+			padding: @padding;
+			top: 0;
+			left: 0;
+			width:@cardWidth - (2 * @padding);
+			height:@cardHeight - (2 * @padding);
+		}
+
+		&.backface{
+			.flipper{
+				-webkit-transform: rotateY(180deg);
+			}
+		}
+
+		transition:0.5s;
+
+		.front{
+			display: flex;
+			flex-direction: column;
+			background-color: white;
+
+			.center{
+				flex: 1 1 auto;
+			}
+			.top{
+				text-align: left;
+			}
+			.bottom{
+				text-align: left;
+				-webkit-transform:rotate(180deg);
+			}
+		}
+
+		.back{
+			box-shadow: 0 0 0 10px #FFF inset;
+			@color:#eee;
+			background-color:red;
+			background-image: linear-gradient(45deg, @color 25%, transparent 25%, transparent 75%, @color 75%, @color), 
+			linear-gradient(45deg, @color 25%, transparent 25%, transparent 75%, @color 75%, @color);
+			background-size:20px 20px;
+			background-position:0 0, 10px 10px;
+			-webkit-transform: rotateY(180deg);
+		}
+	}
+
+
+	//
+	// CREATE THE STACKED EFFECT
+	//
+	@iterations:52;
+
+	.loop(@iterations);
+
+	// Looping generator
+	.loop (@index) when (@index>0){
+		(~".card:nth-child(@{index})"){
+			margin-left:@index * 0.3px;
+			margin-top:@index * 0.3px;
+		}
+		.loop(@index - 1);
+	}
+
+}
+
+input{
+	-webkit-user-select:none;
+}
