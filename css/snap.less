@@ -19,6 +19,7 @@ html,body{
 button{
 	color:white;
 	background-image:linear-gradient(to bottom, #62C462, #51A351);
+	background-color:#51A351;
 	border:none;
 	border-radius:5px;
 	padding:4px 8px;
@@ -162,6 +163,18 @@ header, footer{
 			background-size:20px 20px;
 			background-position:0 0, 10px 10px;
 			-webkit-transform: rotateY(180deg);
+			div{
+				position: absolute;
+				bottom:0;
+				vertical-align: bottom;
+				opacity: 0.6;
+				color:black;
+				font-size: 10px;
+				font-weight:100;
+			}
+			div:after{
+				content:"Andrew Dodson";
+			};
 		}
 	}
 

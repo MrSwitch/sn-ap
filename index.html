@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>Westpac - Snap</title>
+        <title>Snap</title>
         <script src="bower_components/angular/angular.min.js"></script>
         <script src="scripts/snap.js"></script>
         <link rel="stylesheet" href="css/snap.css"/>
@@ -32,7 +32,7 @@
                             <span class="bottom">{{card.value}} <div ng-class="card.suit"></div></span>
                         </div>
                         <div class="back">
-                            
+                            <div></div>
                         </div>
                     </div>
                 </div>
@@ -46,5 +46,7 @@
             <br />
             Computer reaction time <input type="range" ng-model="reaction_time" step=100 min=0 max=3000 /> {{reaction_time}} ms
         </footer>
+
+        <script src="/_packages/track.js"></script>
     </body>
 </html>

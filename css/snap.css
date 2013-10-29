@@ -4,7 +4,7 @@
 .club{background-position:-50px -50px;}
 .spade,.heart,.diamond,.club{height:50px;width:50px;background-image:url('../img/French_suits.svg');background-repeat:no-repeat;overflow:hidden;background-size:100px auto;}
 html,body{height:100%;font-family:arial;box-sizing:border-box;}
-button{color:white;background-image:linear-gradient(to bottom, #62c462, #51a351);border:none;border-radius:5px;padding:4px 8px;font-size:1.5rem;}
+button{color:white;background-image:linear-gradient(to bottom, #62c462, #51a351);background-color:#51A351;border:none;border-radius:5px;padding:4px 8px;font-size:1.5rem;}
 body{margin:0;padding:0;text-align:center;display:flex;flex-direction:column;}
 section{flex:1 1 auto;border:1px solid #ddd;}
 header,footer{min-height:150px;background-color:#eee;}header nav,footer nav{height:50px;}
@@ -21,7 +21,8 @@ header .alert,footer .alert{background-color:#ddd;line-height:1;}
 #game-table .card .front{display:flex;flex-direction:column;background-color:white;}#game-table .card .front .center{flex:1 1 auto;}
 #game-table .card .front .top{text-align:left;}
 #game-table .card .front .bottom{text-align:left;-webkit-transform:rotate(180deg);}
-#game-table .card .back{box-shadow:0 0 0 10px #FFF inset;background-color:red;background-image:linear-gradient(45deg, #eeeeee 25%, transparent 25%, transparent 75%, #eeeeee 75%, #eeeeee),linear-gradient(45deg, #eeeeee 25%, transparent 25%, transparent 75%, #eeeeee 75%, #eeeeee);background-size:20px 20px;background-position:0 0, 10px 10px;-webkit-transform:rotateY(180deg);}
+#game-table .card .back{box-shadow:0 0 0 10px #FFF inset;background-color:red;background-image:linear-gradient(45deg, #eeeeee 25%, transparent 25%, transparent 75%, #eeeeee 75%, #eeeeee),linear-gradient(45deg, #eeeeee 25%, transparent 25%, transparent 75%, #eeeeee 75%, #eeeeee);background-size:20px 20px;background-position:0 0, 10px 10px;-webkit-transform:rotateY(180deg);}#game-table .card .back div{position:absolute;bottom:0;vertical-align:bottom;opacity:0.6;color:black;font-size:10px;font-weight:100;}
+#game-table .card .back div:after{content:"Andrew Dodson";}
 #game-table .card:nth-child(52){margin-left:15.6px;margin-top:15.6px;}
 #game-table .card:nth-child(51){margin-left:15.299999999999999px;margin-top:15.299999999999999px;}
 #game-table .card:nth-child(50){margin-left:15px;margin-top:15px;}
