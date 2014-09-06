@@ -10,11 +10,6 @@
   	overflow : hidden;
   	background-size: 100px auto;
 }
-html,body{
-	height:100%;
-	font-family: arial;
-	box-sizing:border-box;
-}
 
 button{
 	color:white;
@@ -26,27 +21,24 @@ button{
 	font-size:1.5rem;
 }
 
-body{
-	margin:0;
+.body{
+	margin:30px;
 	padding:0;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
-}
-section{
-	flex: 1 1 auto;
-	border:1px solid #ddd; 
-}
 
-header, footer{
-	min-height:150px;
-	background-color: #eee;
-	nav{
-		height:50px;
+	section{
+		flex: 1 1 auto;
 	}
-	.alert{
-		background-color: #ddd;
-		line-height: 1;
+
+	nav, footer{
+		min-height:150px;
+		
+		.alert{
+			background-color: #ddd;
+			line-height: 1;
+		}
 	}
 }
 
@@ -125,8 +117,8 @@ header, footer{
 			padding: @padding;
 			top: 0;
 			left: 0;
-			width:@cardWidth - (2 * @padding);
-			height:@cardHeight - (2 * @padding);
+			width:100%;
+			height:100%;
 		}
 
 		&.backface{
@@ -188,7 +180,7 @@ header, footer{
 
 	// Looping generator
 	.loop (@index) when (@index>0){
-		(~".card:nth-child(@{index})"){
+		.card:nth-child(@{index}){
 			margin-left:@index * 0.3px;
 			margin-top:@index * 0.3px;
 		}

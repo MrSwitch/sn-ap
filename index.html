@@ -1,26 +1,27 @@
 <!doctype html>
 <html lang="en" ng-app>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>Snap</title>
-        <script src="bower_components/angular/angular.min.js"></script>
-        <script src="scripts/snap.js"></script>
-        <link rel="stylesheet" href="css/snap.css"/>
-    </head>
-    <body ng-controller="snap">
-        <header>
-            <h1>Snap</h1>
-            <nav>
-                <div class="alert" ng-show="winner && !end">SNAP, win goes to <b>{{winner}}</b> <button ng-click="next()">next</button></div>
-                <div class="alert" ng-show="end">Game over: the winner "{{winner}}" <button ng-click="reset()">rematch</button></div>
-            </nav>
-            <div id="whosturn">
-                <div class="human" ng-class="{green:!turn}">Player</div>
-                <div class="computer" ng-class="{green:turn}">Computer</div>
-            </div>
-        </header>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Snap</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="scripts/snap.js"></script>
+    <link rel="stylesheet" href="css/snap.css"/>
+    <link href="/adorn/adorn.css" rel="stylesheet"/>
+    <script src="/adorn/adorn.js"></script>
+</head>
+<body ng-controller="snap">
 
+    <div class="body">
+
+        <nav>
+            <div class="alert" ng-show="winner && !end">SNAP, win goes to <b>{{winner}}</b> <button ng-click="next()">next</button></div>
+            <div class="alert" ng-show="end">Game over: the winner "{{winner}}" <button ng-click="reset()">rematch</button></div>
+        </nav>
+        <div id="whosturn">
+            <div class="human" ng-class="{green:!turn}">Player</div>
+            <div class="computer" ng-class="{green:turn}">Computer</div>
+        </div>
         <section>
 
             <div id="game-table">
@@ -47,6 +48,6 @@
             Computer reaction time <input type="range" ng-model="reaction_time" step=100 min=0 max=3000 /> {{reaction_time}} ms
         </footer>
 
-        <script src="/_packages/track.js"></script>
-    </body>
+    </div>
+</body>
 </html>
